@@ -4,7 +4,6 @@ import UTN.dao.DaoHangman;
 import UTN.model.Player;
 import UTN.model.ThreadColor;
 import UTN.model.Word;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,7 +18,7 @@ public class Hangman {
     private List<Character> alphabet;
     private Word word;
     private String theWord;
-    public static int  lives = 20;
+    private static int  lives = 20;
     private volatile boolean keepOnPlaying;
     private String letter;
     private int index;
@@ -91,7 +90,7 @@ public class Hangman {
                 color = ANSI_RESET;
         }
 
-        if(!Player.winner && lives > 0) {
+        if(!Player.isWinner() && lives > 0) {
             System.out.println( ANSI_RESET + "LIVES LEFT: " + Hangman.lives);
             System.out.println(color + "Esta jugando : " + currentThread().getName());
             Random indexLetter = new Random();
@@ -119,7 +118,7 @@ public class Hangman {
                 //we have a winner here
                 setWinnerName(currentThread().getName());
                 System.out.println(ANSI_CYAN  + " --- "+ winnerName + " WINS!!!");
-                Player.winner = true;
+                Player.setWinner(true);
             }
         }
 
@@ -129,6 +128,14 @@ public class Hangman {
 
     public Word getWord() {
         return word;
+    }
+
+    public static int getLives() {
+        return lives;
+    }
+
+    public static void setLives(int lives) {
+        Hangman.lives = lives;
     }
 
     public void setWord(Word word) {

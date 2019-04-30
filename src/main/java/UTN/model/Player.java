@@ -9,7 +9,7 @@ import java.util.Date;
 public class Player implements Runnable{
     private String name;
     private Hangman hangman;
-    public static volatile boolean winner = false;
+    private static volatile boolean winner = false;
 
     public Player(String name, Hangman hangman) {
         this.name = name;
@@ -18,7 +18,7 @@ public class Player implements Runnable{
 
     @Override
     public void run() {
-        while(!winner && Hangman.lives > 0) {
+        while(!winner && Hangman.getLives() > 0) {
             System.out.println(Thread.currentThread().getName() + " EJECUTA EL METODO RUN");
             hangman.waitingRoom();
         }
@@ -38,6 +38,14 @@ public class Player implements Runnable{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public static boolean isWinner() {
+        return winner;
+    }
+
+    public static void setWinner(boolean winner) {
+        Player.winner = winner;
     }
 
     public Hangman getHangman() {

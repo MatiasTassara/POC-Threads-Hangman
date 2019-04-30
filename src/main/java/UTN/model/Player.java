@@ -1,5 +1,6 @@
 package UTN.model;
 
+import UTN.controller.Hangman;
 import UTN.dao.DaoHangman;
 
 import java.text.SimpleDateFormat;
@@ -8,7 +9,7 @@ import java.util.Date;
 public class Player implements Runnable{
     private String name;
     private Hangman hangman;
-    static volatile boolean winner = false;
+    public static volatile boolean winner = false;
 
     public Player(String name, Hangman hangman) {
         this.name = name;

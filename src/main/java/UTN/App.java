@@ -1,6 +1,6 @@
 package UTN;
 
-import UTN.model.Hangman;
+import UTN.controller.Hangman;
 import UTN.model.Player;
 
 public class App 

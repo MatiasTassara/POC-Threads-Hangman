@@ -1,6 +1,9 @@
-package UTN.model;
+package UTN.controller;
 
 import UTN.dao.DaoHangman;
+import UTN.model.Player;
+import UTN.model.ThreadColor;
+import UTN.model.Word;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +19,7 @@ public class Hangman {
     private List<Character> alphabet;
     private Word word;
     private String theWord;
-    static int  lives = 20;
+    public static int  lives = 20;
     private volatile boolean keepOnPlaying;
     private String letter;
     private int index;
